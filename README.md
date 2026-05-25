@@ -164,9 +164,7 @@ Télécharger `creditcard.csv` depuis [Kaggle](https://www.kaggle.com/datasets/m
 
 Le dataset présente un déséquilibre **extrême** :
 
-<!-- INSÉRER ICI : outputs/figures/2_1_class_distribution.png -->
-
-> 📊 *Insérer ici la figure `2_1_class_distribution.png`*
+<img width="1657" height="663" alt="image" src="https://github.com/user-attachments/assets/951112e2-7da7-4814-b930-2df836dcdc45" />
 
 ```
 Distribution :
@@ -179,8 +177,7 @@ Distribution :
 
 Le montant (`Amount`) présente une distribution **fortement asymétrique** (skewed) avec des valeurs allant de 0€ à 25 691€.
 
-<!-- INSÉRER ICI : outputs/figures/2_2_amount_time_distribution.png -->
-> 📊 *Insérer ici la figure `2_2_amount_time_distribution.png`*
+<img width="2314" height="1274" alt="image" src="https://github.com/user-attachments/assets/74d3d820-75ec-46aa-b0eb-6477b780ca9c" />
 
 **Résultat du test Mann-Whitney U :** différence statistiquement significative entre les montants des fraudes et des transactions légitimes (p < 0.05).
 
@@ -188,8 +185,8 @@ Le montant (`Amount`) présente une distribution **fortement asymétrique** (ske
 
 Test KS appliqué à chaque feature pour mesurer la différence de distribution entre fraudes et transactions légitimes.
 
-<!-- INSÉRER ICI : outputs/figures/2_3_V1_V28_distributions.png -->
-> 📊 *Insérer ici la figure `2_3_V1_V28_distributions.png`*
+<img width="2574" height="3567" alt="image" src="https://github.com/user-attachments/assets/b53096ab-1932-4ee7-add2-c511a69d3b4c" />
+
 
 **Features les plus discriminantes (KS Stat > 0.3) :**
 ```
@@ -200,8 +197,8 @@ Test KS appliqué à chaque feature pour mesurer la différence de distribution 
 
 #### 1.4 Matrice de Corrélation
 
-<!-- INSÉRER ICI : outputs/figures/2_4_correlation_matrix.png -->
-> 📊 *Insérer ici la figure `2_4_correlation_matrix.png`*
+<img width="2625" height="2314" alt="image" src="https://github.com/user-attachments/assets/91e073c7-eb75-436e-aa24-77908587c491" />
+
 
 **Observations :**
 - Les composantes V1–V28 sont **orthogonales par construction** (PCA) → aucune corrélation entre elles → matrice quasi-blanche
@@ -210,8 +207,8 @@ Test KS appliqué à chaque feature pour mesurer la différence de distribution 
 
 #### 1.5 VIF (Variance Inflation Factor)
 
-<!-- INSÉRER ICI : outputs/figures/2_5_vif_scores.png -->
-> 📊 *Insérer ici la figure `2_5_vif_scores.png`*
+<img width="1794" height="884" alt="image" src="https://github.com/user-attachments/assets/6893d0c1-b55c-4feb-82e1-104f409b42cb" />
+
 
 **Résultat :** Seule la feature `Amount` présente un VIF > 10 → multicolinéarité due à sa corrélation avec V2 (-0.533).  
 **Décision :** Transformer `Amount` pour réduire son VIF.
@@ -224,8 +221,8 @@ Test KS appliqué à chaque feature pour mesurer la différence de distribution 
 
 Comparaison de trois transformations pour réduire l'asymétrie :
 
-<!-- INSÉRER ICI : outputs/figures/3_1_amount_transformations.png -->
-> 📊 *Insérer ici la figure `3_1_amount_transformations.png`*
+<img width="2314" height="1274" alt="image" src="https://github.com/user-attachments/assets/34305ed3-8ec0-4dc5-b904-251bb543bbd7" />
+
 
 | Transformation | Skewness | Kurtosis |
 |---|---|---|
@@ -239,8 +236,8 @@ Comparaison de trois transformations pour réduire l'asymétrie :
 
 `Time` représente des secondes écoulées sur 48h. On le convertit en **heure de la journée** puis en encodage sin/cos pour capturer la périodicité sans discontinuité artificielle entre 23h et 0h.
 
-<!-- INSÉRER ICI : outputs/figures/3_2_time_cyclique.png -->
-> 📊 *Insérer ici la figure `3_2_time_cyclique.png`*
+<img width="2314" height="1274" alt="image" src="https://github.com/user-attachments/assets/a1771010-8560-4759-a185-81bfafee704a" />
+
 
 ```
 Time_sin = sin(2π × heure / 24)
@@ -264,8 +261,8 @@ Time_cos = cos(2π × heure / 24)
 
 #### 2.4 Sélection des Features (Dual Ranking MI + RF)
 
-<!-- INSÉRER ICI : outputs/figures/3_4_feature_importance.png -->
-> 📊 *Insérer ici la figure `3_4_feature_importance.png`*
+<img width="2314" height="1274" alt="image" src="https://github.com/user-attachments/assets/ac42f13b-e369-4542-ab78-5db530c07ed1" />
+
 
 **Méthode :** Mutual Information + Random Forest rapide → ranking combiné  
 **Résultat :** 32 features sélectionnées sur 36 (top 85%)  
@@ -289,8 +286,8 @@ Test set  :  56 746 observations (20%) — évaluation finale
 
 Quatre variantes du train set préparées pour comparaison :
 
-<!-- INSÉRER ICI : outputs/figures/4_3_resampling_comparison.png -->
-> 📊 *Insérer ici la figure `4_3_resampling_comparison.png`*
+<img width="2314" height="637" alt="image" src="https://github.com/user-attachments/assets/8d608a5e-cfc6-4646-addf-09e494217447" />
+
 
 | Variante | Méthode | Mécanisme | Fraudes train |
 |---|---|---|---|
@@ -326,17 +323,15 @@ Quatre variantes du train set préparées pour comparaison :
 
 #### Résultats
 
-<!-- INSÉRER ICI : outputs/figures/5_2_gridsearch_classweight.png -->
-> 📊 *Insérer ici la figure `5_2_gridsearch_classweight.png`*
+<img width="999" height="624" alt="image" src="https://github.com/user-attachments/assets/c04355ec-9395-4b1c-970c-b573ca85c1ed" />
 
-<!-- INSÉRER ICI : outputs/figures/5_4_lr_coefficients.png -->
-> 📊 *Insérer ici la figure `5_4_lr_coefficients.png`*
+
+<img width="1534" height="1014" alt="image" src="https://github.com/user-attachments/assets/0614aee8-cf0a-469e-b9ab-1238a3085161" />
+
 
 **Meilleure variante :** SMOTE (AUPRC CV = 0.991 vs 0.745 pour class_weight)  
 **Coefficients mis à zéro par L1 :** 0/32 → l1_ratio faible, L2 domine
 
-<!-- INSÉRER ICI : outputs/figures/5_5_lr_evaluation.png -->
-> 📊 *Insérer ici la figure `5_5_lr_evaluation.png`*
 
 ```
 LR Elastic Net — Test Set :
@@ -362,8 +357,8 @@ LR Elastic Net — Test Set :
 | `class_weight` | balanced_subsample | Recalculé à chaque bootstrap — plus robuste que 'balanced' |
 | `oob_score` | True | Estimation gratuite de généralisation sans validation set |
 
-<!-- INSÉRER ICI : outputs/figures/6_2_rf_feature_importance.png -->
-> 📊 *Insérer ici la figure `6_2_rf_feature_importance.png`*
+<img width="2314" height="1019" alt="image" src="https://github.com/user-attachments/assets/a6d53808-82d0-44d9-81e3-b0f3fcb61fd6" />
+
 
 #### Matrice de Proximité — Concept Clé
 
@@ -375,8 +370,8 @@ Proximité(i, j) = (1/N_arbres) × Σ 1[feuille_k(i) == feuille_k(j)]
 
 **Propriétés :** symétrique, ∈ [0,1], non-linéaire (deux points éloignés en euclidien peuvent avoir une proximité élevée s'ils partagent les mêmes règles de décision).
 
-<!-- INSÉRER ICI : outputs/figures/6_3_proximity_matrix.png -->
-> 📊 *Insérer ici la figure `6_3_proximity_matrix.png`*
+<img width="2054" height="764" alt="image" src="https://github.com/user-attachments/assets/2d704dbb-4b26-4cd3-96cb-ac9c05cfcffa" />
+
 
 ```
 Matrice calculée sur : 5000 observations (sous-échantillon stratifié)
@@ -395,8 +390,8 @@ outlier_score(i) = 1 / Σ_{j ∈ même_classe_prédite} Proximité(i,j)²
 
 Un score élevé → l'observation est **isolée** dans l'espace de décision des arbres → le modèle hésite ou échoue.
 
-<!-- INSÉRER ICI : outputs/figures/6_5_proximity_outliers.png -->
-> 📊 *Insérer ici la figure `6_5_proximity_outliers.png`*
+<img width="2054" height="1529" alt="image" src="https://github.com/user-attachments/assets/8b04dc1c-6804-40e6-8b54-ab2ad86b5074" />
+
 
 ```
 Outliers détectés (P95) : 81 observations (1.6%)
@@ -410,8 +405,8 @@ Outliers détectés (P95) : 81 observations (1.6%)
 
 #### Résultats
 
-<!-- INSÉRER ICI : outputs/figures/6_6_rf_evaluation.png -->
-> 📊 *Insérer ici la figure `6_6_rf_evaluation.png`*
+<img width="1680" height="637" alt="image" src="https://github.com/user-attachments/assets/8c8e1b7e-fb08-49e5-aa60-a91243e6ed53" />
+
 
 ```
 Random Forest — Test Set :
@@ -449,8 +444,8 @@ Gradient et Hessien (requis par XGBoost) :
 ∂²L/∂p² = [α×y/p² + β×(1-y)/(1-p)²] × (p×(1-p))²
 ```
 
-<!-- INSÉRER ICI : outputs/figures/7_2_custom_loss.png -->
-> 📊 *Insérer ici la figure `7_2_custom_loss.png`*
+<img width="1794" height="637" alt="image" src="https://github.com/user-attachments/assets/1347ae8e-8291-4bfd-bfa6-b6582b6e65fc" />
+
 
 #### Optimisation Bayésienne — Optuna (TPE)
 
@@ -477,11 +472,10 @@ Gradient et Hessien (requis par XGBoost) :
 | `min_child_weight` | [1, 10] | Contrôle la profondeur sur classe minoritaire |
 | `gamma` | [0, 2] | Gain minimum pour effectuer un split |
 
-<!-- INSÉRER ICI : outputs/figures/7_4_optuna_convergence.png -->
-> 📊 *Insérer ici la figure `7_4_optuna_convergence.png`*
+<img width="2311" height="1529" alt="image" src="https://github.com/user-attachments/assets/2d68324d-1885-45d7-bf00-243677db6409" />
 
-<!-- INSÉRER ICI : outputs/figures/7_4_param_importance.png -->
-> 📊 *Insérer ici la figure `7_4_param_importance.png`*
+<img width="2052" height="764" alt="image" src="https://github.com/user-attachments/assets/e18e6c3d-4bdb-4e0f-b430-07945df5333f" />
+
 
 #### Meilleurs Hyperparamètres Retenus (Optuna)
 
@@ -508,8 +502,8 @@ Gradient et Hessien (requis par XGBoost) :
 
 #### Résultats
 
-<!-- INSÉRER ICI : outputs/figures/7_5_xgb_evaluation.png -->
-> 📊 *Insérer ici la figure `7_5_xgb_evaluation.png`*
+<img width="1937" height="764" alt="image" src="https://github.com/user-attachments/assets/37b77196-b5dc-4d9b-9545-a08a65056481" />
+
 
 ```
 XGBoost — Test Set :
@@ -531,11 +525,11 @@ XGBoost — Test Set :
 | Random Forest | 0.9084 | 0.8273 | 0.8144 | 67 | 28 | 2 | 0.705 |
 | **XGBoost** ✔ | **0.9301** | **0.8650** | **0.8176** | **74** | **21** | **3** | **0.779** |
 
-<!-- INSÉRER ICI : outputs/figures/8_2_pr_curves_comparison.png -->
-> 📊 *Insérer ici la figure `8_2_pr_curves_comparison.png`*
+<img width="2314" height="892" alt="image" src="https://github.com/user-attachments/assets/3432683a-897f-4de7-b1ae-602aa812de9c" />
 
-<!-- INSÉRER ICI : outputs/figures/8_3_confusion_matrices.png -->
-> 📊 *Insérer ici la figure `8_3_confusion_matrices.png`*
+
+<img width="2278" height="1401" alt="image" src="https://github.com/user-attachments/assets/b5a86413-7662-440b-a2bc-51977cd6a5bb" />
+
 
 **Progression claire :**
 ```
@@ -555,8 +549,8 @@ AUPRC    : LR(0.7254) → RF(0.8144) → XGB(0.8176)
 - Axe Y : fréquence réelle des positifs dans chaque bin
 - Courbe parfaite = diagonale
 
-<!-- INSÉRER ICI : outputs/figures/9_X_calibration_before.png -->
-> 📊 *Insérer ici la figure de calibration avant correction*
+<img width="2054" height="2101" alt="image" src="https://github.com/user-attachments/assets/54e16568-8ebe-4425-994b-109f285dfb85" />
+
 
 **Deux méthodes de calibration :**
 
@@ -565,8 +559,8 @@ AUPRC    : LR(0.7254) → RF(0.8144) → XGB(0.8176)
 | **Platt Scaling** | Paramétrique (régression logistique sur les scores) | Courbe sigmoïde, peu de données |
 | **Isotonic Regression** | Non-paramétrique | Plus flexible, beaucoup de données |
 
-<!-- INSÉRER ICI : outputs/figures/9_X_calibration_after.png -->
-> 📊 *Insérer ici la figure de calibration après correction*
+<img width="2574" height="892" alt="image" src="https://github.com/user-attachments/assets/db39db5a-6175-41e3-9477-4db55e12d341" />
+
 
 ```
 Modèle retenu : XGBoost (scale_pos_weight)
@@ -582,33 +576,126 @@ Seuil optimal : 0.8540
 
 **Propriétés garanties :** efficacité, symétrie, linéarité, nulle si feature inutile.
 
-#### Summary Plot — Importance Globale
+---
 
-<!-- INSÉRER ICI : outputs/figures/10_X_shap_summary_rf.png ou xgb -->
-> 📊 *Insérer ici le Summary Plot SHAP*
+#### 9.1 Summary Plot — Importance Globale (Random Forest)
+
+<img width="1433" height="1274" alt="image" src="https://github.com/user-attachments/assets/edcf6719-9d99-41e9-a5b2-82482186921d" />
+
+
+**Lecture :**
+- Axe X : valeur SHAP (contribution à la prédiction de fraude)
+- Couleur : valeur de la feature (Rouge = élevée, Bleu = faible)
+- `Fraud_signal_norm` en tête → notre feature engineerée capte le signal global
+- `V14` faible (bleu) → pousse fortement vers fraude (SHAP négatif = contribution à la classe positive dans ce contexte)
+
+---
+
+#### 9.2 Waterfall Plot — Explication Individuelle (Random Forest)
+
+<img width="1037" height="1144" alt="image" src="https://github.com/user-attachments/assets/30f4141f-a6f4-41ef-804f-333d56b521b6" />
+
+
+**Lecture :** Fraude confirmée avec score = 0.965
+- Point de départ : E[f(X)] = 0.5 (probabilité moyenne du modèle)
+- `Fraud_signal_norm` (+0.11) → contribution la plus forte vers fraude
+- `V14_x_V12` (+0.08) → notre feature d'interaction confirme le signal
+- `V8` (-0.02) → légèrement contre la prédiction fraude sur ce cas précis
+- Score final : f(x) = 0.965 → le modèle est très confiant
+
+---
+
+#### 9.3 Summary Plot — Importance Globale (XGBoost)
+
+<img width="1437" height="1274" alt="image" src="https://github.com/user-attachments/assets/e41ad7a6-b6ee-4159-9964-48b4e7dfd1b6" />
+
+
+**Observations vs Random Forest :**
+- `V14` reste la feature dominante dans les deux modèles ✔
+- XGBoost accorde plus de poids à `V8`, `V21`, `V20` que RF
+- `Fraud_signal_norm` reste dans le top 15 → feature engineerée validée
+
+---
+
+#### 9.4 Bar Plot — Importance Globale (XGBoost)
+
+<img width="1534" height="1014" alt="image" src="https://github.com/user-attachments/assets/8697c3a3-8d14-4320-9c39-378472b4a927" />
+
+
+**Top 5 features XGBoost (|SHAP| moyen) :**
+
+| Rang | Feature | |SHAP| moyen |
+|---|---|---|
+| 1 | V14 | 0.00137 |
+| 2 | V8 | 0.00117 |
+| 3 | V21 | 0.00090 |
+| 4 | V20 | 0.00079 |
+| 5 | V13 | 0.00075 |
+
+---
+
+#### 9.5 Waterfall Plot — Explication Individuelle (XGBoost)
+
+<img width="2024" height="1575" alt="image" src="https://github.com/user-attachments/assets/9f58c73f-18a4-48df-822c-c5e91649c326" />
+
+
+**Lecture :** Même fraude confirmée (score = 1.0000)
+- Point de départ : E[f(X)] = 0.0101 (probabilité moyenne XGBoost, très faible car données déséquilibrées)
+- `V14` (+0.20) → contribution individuelle la plus forte vers fraude
+- `Fraud_signal_norm` (+0.16) → notre feature engineerée confirme le signal
+- `V4` (+0.15), `V12` (+0.14) → features PCA discriminantes
+- `V23` (-0.05) → légèrement contre la prédiction fraude
+- Score final : f(x) = 1.0 → certitude maximale du modèle
+
+---
+
+#### 9.6 Dependence Plots — Effets Non-Linéaires (XGBoost)
+
+<img width="1014" height="1144" alt="image" src="https://github.com/user-attachments/assets/db12e252-4292-4bf5-a68d-435dd72fc9f9" />
+
+
+**Lecture par feature :**
+
+| Feature | Observation | Interprétation |
+|---|---|---|
+| **V14** | Valeurs < -5 → SHAP positif élevé | Une valeur très négative de V14 = fort signal fraude |
+| **V8** | Valeurs < -5 → SHAP négatif | Grandes valeurs négatives de V8 réduisent le score |
+| **V21** | Concentré autour de 0 | Effet principalement pour les valeurs extrêmes |
+| **V20** | Valeurs autour de 0 → SHAP négatif | Signal fraude pour V20 ≈ 0 |
+
+> Ces effets **non-linéaires** sont invisibles pour la régression logistique → justifie l'utilisation de XGBoost.
+
+---
+
+#### 9.7 Comparaison RF vs XGBoost — Cohérence SHAP
+
+<img width="2054" height="1014" alt="image" src="https://github.com/user-attachments/assets/d08bae97-6f86-40d0-8301-1b64d87f6b81" />
+
+<img width="1217" height="1014" alt="image" src="https://github.com/user-attachments/assets/dbf49fee-9312-4a0f-a092-5d8f679f60a3" />
+
+
+**Corrélation de Spearman entre rankings SHAP : ρ = 0.357 (p = 0.045)**
+
+**Consensus entre les deux modèles :**
+
+| Feature | RF | XGBoost | Consensus |
+|---|---|---|---|
+| V14 | #2 | #1 | ✔ Fort |
+| V12 | #3 | #6 | ✔ Modéré |
+| V4 | #4 | #8 | ✔ Modéré |
+| Fraud_signal_norm | #1 | #13 | ⚠ Divergent |
+| V8 | #15 | #2 | ⚠ Divergent |
+
+**Interprétation de la divergence :**
+- `Fraud_signal_norm` : RF lui donne le rang #1 (norme L2 des top features = signal global) mais XGBoost le décompose en ses composantes individuelles (V14, V8, V12 séparément) → même information, représentation différente
+- `V8` : XGBoost détecte un signal fort que RF diffuse sur plusieurs features corrélées
+- La corrélation ρ = 0.357 significative (p < 0.05) confirme un **consensus partiel** → les deux modèles s'accordent sur les features les plus importantes
 
 **Top 5 features en consensus RF + XGBoost :**
 ```
 ['V14', 'V12', 'V4', 'Fraud_signal_norm', 'V8']
 ```
-
-#### Force Plot — Explication Individuelle
-
-<!-- INSÉRER ICI : outputs/figures/10_X_shap_force_plot.png -->
-> 📊 *Insérer ici un Force Plot SHAP pour une fraude confirmée*
-
-**Lecture :** Chaque barre représente la contribution d'une feature à l'écart entre la prédiction et la valeur moyenne. Rouge = pousse vers "fraude", bleu = pousse vers "légitime".
-
-#### Dependence Plot — Effets Non-Linéaires
-
-<!-- INSÉRER ICI : outputs/figures/10_X_shap_dependence.png -->
-> 📊 *Insérer ici un Dependence Plot pour V14*
-
-**Interprétation :** Une valeur faible de V14 → forte contribution SHAP positive → augmente le score de fraude. Effet non-linéaire invisible pour la régression logistique.
-
----
-
-## 📊 Résultats
+## Résultats
 
 ### Récapitulatif Exécutif
 
@@ -657,38 +744,8 @@ Dans la détection de fraude, les **Faux Négatifs** (fraudes non détectées) s
 
 ---
 
-## 📸 Visualisations Clés
 
-> **Instructions :** Copier les fichiers PNG depuis `outputs/figures/` et les insérer aux emplacements marqués dans ce README.
-
-| Figure | Chemin | Description |
-|---|---|---|
-| Distribution des classes | `outputs/figures/2_1_class_distribution.png` | Bar chart + pie chart du déséquilibre 599:1 |
-| Amount & Time | `outputs/figures/2_2_amount_time_distribution.png` | Distributions, boxplots, statistiques comparatives |
-| V1–V28 distributions | `outputs/figures/2_3_V1_V28_distributions.png` | Histogrammes KS test par feature |
-| Matrice de corrélation | `outputs/figures/2_4_correlation_matrix.png` | Heatmap orthogonalité PCA |
-| VIF scores | `outputs/figures/2_5_vif_scores.png` | Barplot VIF — Amount > 10 |
-| Transformations Amount | `outputs/figures/3_1_amount_transformations.png` | Comparaison log1p vs Yeo-Johnson |
-| Encodage cyclique Time | `outputs/figures/3_2_time_cyclique.png` | Cercle unitaire sin/cos |
-| Feature importance | `outputs/figures/3_4_feature_importance.png` | Dual ranking MI + RF |
-| Rééchantillonnage | `outputs/figures/4_3_resampling_comparison.png` | Original vs SMOTE vs ADASYN vs NearMiss |
-| GridSearch LR | `outputs/figures/5_2_gridsearch_classweight.png` | Heatmap AUPRC (C, l1_ratio) |
-| Coefficients LR | `outputs/figures/5_4_lr_coefficients.png` | Top 20 coefficients Elastic Net |
-| Évaluation LR | `outputs/figures/5_5_lr_evaluation.png` | Matrice confusion + Courbe PR |
-| RF Feature Importance | `outputs/figures/6_2_rf_feature_importance.png` | Gini importance + courbe cumulative |
-| Matrice de proximité | `outputs/figures/6_3_proximity_matrix.png` | Heatmap + distribution des scores |
-| Outliers prédiction | `outputs/figures/6_5_proximity_outliers.png` | Analyse des cas difficiles |
-| Évaluation RF | `outputs/figures/6_6_rf_evaluation.png` | Matrice confusion + Courbe PR |
-| Custom Loss | `outputs/figures/7_2_custom_loss.png` | Fonction de perte asymétrique |
-| Convergence Optuna | `outputs/figures/7_4_optuna_convergence.png` | Optimization history |
-| Importance params | `outputs/figures/7_4_param_importance.png` | FAnova hyperparamètres |
-| Évaluation XGBoost | `outputs/figures/7_5_xgb_evaluation.png` | Matrice confusion + Courbe PR |
-| Courbes PR comparées | `outputs/figures/8_2_pr_curves_comparison.png` | 3 modèles sur même graphe |
-| Confusion matrices | `outputs/figures/8_3_confusion_matrices.png` | Comparaison côte à côte |
-
----
-
-## 📚 Bibliothèques Utilisées
+## Bibliothèques Utilisées
 
 | Bibliothèque | Version | Usage |
 |---|---|---|
@@ -706,17 +763,17 @@ Dans la détection de fraude, les **Faux Négatifs** (fraudes non détectées) s
 
 ---
 
-## 👥 Auteurs
+## Auteurs
 
-> *Insérer ici les noms des membres du groupe*
+> HAFSSA MIFTAH IDRISSI - HANANE AIT LHAJ
 
-**Encadrant :** *Insérer le nom du professeur*  
-**Formation :** Master — Module Intelligence Artificielle  
-**Année :** 2024–2025
+**Encadrant :** Mme Asmae Ouhmida  
+**Formation :** Master — SDIA 1 
+**Année :** 2025–2026
 
 ---
 
-## 📄 Licence
+## Licence
 
 Ce projet est réalisé dans un cadre académique.  
 Dataset source : [ULB Machine Learning Group](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
